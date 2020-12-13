@@ -1,8 +1,9 @@
 class Inhabitant {
-   constructor({ species, name, say }) {
+   constructor({ species, name, say, gender }) {
       this.species = species;
       this.name = name;
       this.say = say;
+      this.gender = gender;
       this.friends = new Set();
    }
 
@@ -12,9 +13,9 @@ class Inhabitant {
    }
 
    toString() {
-      const { name, species, friends } = this;
+      const { name, species, friends, gender } = this;
       return (
-         `Data: ${species}, ${name}, ${friends.size || 'no'} friend` +
+         `Data: ${species}, ${gender}, ${name}, ${friends.size || 'no'} friend` +
          `${friends.size == 1 ? '' : 's'}`
       )
    }
@@ -22,7 +23,7 @@ class Inhabitant {
 
 class Animal extends Inhabitant {
    constructor({ species, name, gender, say, paws = 4 }) {
-      super({ species, name, say });
+      super({ species, name, say, gender });
       this.paws = paws;
       this.gender = gender;
    }
@@ -52,7 +53,7 @@ class Cat extends Animal {
 
 class Human extends Inhabitant {
    constructor({ species = "human", name, say, gender, hands = 2, legs = 2 }) {
-      super({ species, name, say });
+      super({ species, name, say, gender });
       this.legs = legs;
       this.hands = hands;
       this.gender = gender;
